@@ -1,4 +1,5 @@
 import os
+from typing import List
 import openai
 import argparse
 import re
@@ -22,7 +23,7 @@ def main():
 def validate_length(prompt: str) -> bool:
     return len(prompt) <= MAX_INPUT_LENGTH  
 
-def generate_keywords(propmt: str):
+def generate_keywords(propmt: str) -> List[str]:
     openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate related branding keywords for {propmt}"
     print(enriched_prompt)
@@ -42,7 +43,7 @@ def generate_keywords(propmt: str):
     print(f"Keywords: {keywords_array}")
     return keywords_array
 
-def generate_branding_snippet(propmt: str):
+def generate_branding_snippet(propmt: str) -> str:
     openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate upbeat branding snippet for {propmt}"
     print(enriched_prompt)
